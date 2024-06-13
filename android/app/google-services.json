@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "280362585018",
+    "project_id": "coc-players-trophies-data",
+    "storage_bucket": "coc-players-trophies-data.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:280362585018:android:44d24de5f83ddce7c36b83",
+        "android_client_info": {
+          "package_name": "com.example.clash_of_clans_static"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAl8DPpOZSiD8IPrpwAW2v_Y-2wF1P9vck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
