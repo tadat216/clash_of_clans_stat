@@ -1,5 +1,6 @@
-import 'package:clash_of_clans_static/model/trophy.dart';
+import 'package:clash_of_clans_static/models/trophy.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 class PageTrophyData extends StatelessWidget {
@@ -7,6 +8,7 @@ class PageTrophyData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //final envi = dotenv.env['a'];
     return Scaffold(
       body: StreamBuilder<List<TrophySnapshot>>(
         stream: TrophySnapshot.getAllTrophies(),

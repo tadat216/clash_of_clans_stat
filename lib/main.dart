@@ -1,15 +1,27 @@
+import 'package:clash_of_clans_static/page/home_page.dart';
+import 'package:clash_of_clans_static/page/page_player_detail.dart';
 import 'package:clash_of_clans_static/page/page_trophy_data.dart';
+import 'package:clash_of_clans_static/services/api_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'blocs/player_bloc.dart';
 
 Future<void> main() async {
+  await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
+  final apiService = ApiService();
+  await apiService.login();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  final playerBloc = PlayerBloc(apiService: apiService);
+  runApp(MyApp(playerBloc: playerBloc));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final PlayerBloc playerBloc;
+
+  MyApp({required this.playerBloc});
 
   // This widget is the root of your application.
   @override
@@ -35,7 +47,10 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: PageTrophyData(),
+      home: HomePage(playerBloc: playerBloc),
+      routes: {
+        '/player': (context) => PagePlayerDetail(playerBloc: playerBloc),
+      },
     );
   }
 }
